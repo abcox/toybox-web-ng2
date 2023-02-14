@@ -1,0 +1,42 @@
+<mat-card>
+    <mat-card-header>{{title}} {{($contact|async)?.name}}</mat-card-header>
+    <mat-card-content>
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>Name</mat-label>
+                <input
+                    matInput placeholder="Name"
+                    [value]="($contact|async)?.name"
+                    [(ngModel)]="editedContact.name"
+                    name="name">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email"
+                    [value]="($contact|async)?.email"
+                    [(ngModel)]="editedContact.email"
+                    name="email">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Phone</mat-label>
+                <input matInput placeholder="Phone"
+                    [value]="($contact|async)?.phone"
+                    [(ngModel)]="editedContact.phone"
+                    name="phone">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Id</mat-label>
+                <input matInput placeholder="Id" [value]="($id|async)">
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-footer>
+        <a class="nav-link" [routerLink]="['/accounts']">
+            Back
+        </a>
+        <button mat-button color="primary"
+            (click)="save()">
+            Save
+        </button>
+    </mat-card-footer>
+</mat-card>
