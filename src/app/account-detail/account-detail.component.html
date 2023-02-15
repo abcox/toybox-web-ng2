@@ -24,7 +24,7 @@
                     [(ngModel)]="editedContact.phone"
                     name="phone">
             </mat-form-field>
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width" *ngIf="id!==null">
                 <mat-label>Id</mat-label>
                 <input matInput placeholder="Id" [value]="($id|async)">
             </mat-form-field>

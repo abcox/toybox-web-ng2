@@ -29,24 +29,23 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.$id = this.route.paramMap.pipe(
       map(param => param.get('id')),
       //filter(id => id !== null)
-    ) as Observable<string>;
+    ) as Observable<any>;
 
     this.$contact = this.$id.pipe(
-      //debounce(() => timer(2000)),
-      //tap((id) => console.log(`id: ${id}`)),09270927
-      //filter<string>(id => id !== '' && id !== undefined && id !== null),
       debounceTime(500),
-      filter(id => isNonNull(id)),
       distinctUntilChanged(),
       switchMap(id => {
-        //console.log(`id: ${id}`);
-        if (isNonNull(id)) {
+        if (!!id && id !== 'null') {
           this.id = id;
           console.log(`id: ${id}`);
           return from(api.getContact(id).then(resp => (resp.data as unknown) as ContactDto));
         } else {
           this.id = null;
-          return of({} as ContactDto);
+          return of({
+            name: '',
+            email: '',
+            phone: ''
+          } as ContactDto);
         }
       }
     ));
@@ -61,11 +60,12 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   }
   async save() {
     const item = this.editedContact;
-    let id: string = '';
+    let id: string = this.id;
     //this.$id.subscribe(item => id = item);
     console.log(`item: ${item}`);
     try {
       if (this.id !== null) {
+        console.log(`updating ${id} with ${item}`);
         const res = await api.updateContact(id, { ...item });
       } else {
         const res = await api.createContact({...this.editedContact});
