@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { defer, filter, from, map, Observable, switchMap } from 'rxjs';
+import { defer, debounce, filter, first, from, last, map, Observable, switchMap, tap, timer, distinctUntilChanged, of, debounceTime } from 'rxjs';
+import { isNonNull } from 'src/main';
 import { ContactApi, ContactDto } from 'toybox-backend';
 import { config as apiConfig } from "../../api/config";
 
@@ -20,6 +21,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     email: '',
     phone: ''
   };
+  id: any = null;
   constructor(
     private route: ActivatedRoute,
     private router: Router
@@ -30,8 +32,23 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     ) as Observable<string>;
 
     this.$contact = this.$id.pipe(
-      switchMap(id =>
-        from(api.getContact(id).then(resp => (resp.data as unknown) as ContactDto))
+      //debounce(() => timer(2000)),
+      //tap((id) => console.log(`id: ${id}`)),09270927
+      //filter<string>(id => id !== '' && id !== undefined && id !== null),
+      debounceTime(500),
+      filter(id => isNonNull(id)),
+      distinctUntilChanged(),
+      switchMap(id => {
+        //console.log(`id: ${id}`);
+        if (isNonNull(id)) {
+          this.id = id;
+          console.log(`id: ${id}`);
+          return from(api.getContact(id).then(resp => (resp.data as unknown) as ContactDto));
+        } else {
+          this.id = null;
+          return of({} as ContactDto);
+        }
+      }
     ));
 
     this.$contact.subscribe(contact => this.editedContact = contact);
@@ -45,10 +62,14 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   async save() {
     const item = this.editedContact;
     let id: string = '';
-    this.$id.subscribe(item => id = item);
+    //this.$id.subscribe(item => id = item);
     console.log(`item: ${item}`);
     try {
-      const resp = await api.updateContact(id, { ...item });
+      if (this.id !== null) {
+        const res = await api.updateContact(id, { ...item });
+      } else {
+        const res = await api.createContact({...this.editedContact});
+      }
       this.router.navigate(['/accounts']);
     } catch (err) {
       console.error(err);

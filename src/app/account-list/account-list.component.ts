@@ -13,7 +13,7 @@ const api = new ContactApi(apiConfig);
 })
 export class AccountListComponent {
   title='Accounts'
-  displayedColumns: string[] = ['name','email','phone','edit'];
+  displayedColumns: string[] = ['name','email','phone','edit','delete'];
   dataSource!: DataSource<ContactDto>;
 
   constructor(
@@ -34,6 +34,16 @@ export class AccountListComponent {
 
   edit(id: any) {
     console.log(`id: ${id}`);
-    this.router.navigate(['/account-details', 1]);
+    this.router.navigate(['/account-details', 0]);
+  }
+
+  async delete(id: any) {
+    console.log(`delete ${id}`);
+    try {
+      const res = await api.deleteContact(id);
+      this.fetchItems();
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
