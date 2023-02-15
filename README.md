@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
+## Back-end / API
+
+This is an Angular web client for back-end typescript API (used NestJS) [toybox-api](https://github.com/abcox/toybox-api)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
