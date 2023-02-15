@@ -8,16 +8,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { AccountListComponent } from './account-list/account-list.component';
+import { ContactDetailComponent } from './contact/contact-detail/contact-detail.component';
+import { ContactListComponent } from './contact/contact-list/contact-list.component';
 import { OrderListComponent } from './order-list/order-list.component';
-import { AccountDetailComponent } from './account-detail/account-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccountListComponent,
+    ContactDetailComponent,
+    ContactListComponent,
     OrderListComponent,
-    AccountDetailComponent
   ],
   imports: [
     BrowserModule,

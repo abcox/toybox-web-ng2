@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountListComponent } from './account-list/account-list.component';
-import { AccountDetailComponent } from './account-detail/account-detail.component';
+import { ContactListComponent } from './contact/contact-list/contact-list.component';
+import { ContactDetailComponent } from './contact/contact-detail/contact-detail.component';
 import { OrderListComponent } from './order-list/order-list.component';
 
 export const routes: Routes = [
-  { path: 'accounts', component: AccountListComponent, title: 'Accounts', data: { title: 'Accounts' } },
+  { path: 'contacts', component: ContactListComponent, title: 'Contacts', data: { title: 'Contacts' } },
   { path: 'orders', component: OrderListComponent, title: 'Orders', data: { title: 'Orders' } },
-  { path: 'account/detail/:id', component: AccountDetailComponent },
+  { path: 'contact/detail/:id', component: ContactDetailComponent },
 ];
 
 //@NgModule({

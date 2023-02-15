@@ -2,16 +2,16 @@ import { DataSource } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactApi, ContactDto } from 'toybox-backend';
-import { config as apiConfig } from "../../api/config";
+import { config as apiConfig } from "../../../api/config";
 
 const api = new ContactApi(apiConfig);
 
 @Component({
-  selector: 'app-account-list',
-  templateUrl: './account-list.component.html',
-  styleUrls: ['./account-list.component.scss']
+  selector: 'contact-list',
+  templateUrl: './contact-list.component.html',
+  styleUrls: ['./contact-list.component.scss']
 })
-export class AccountListComponent {
+export class ContactListComponent {
   title='Accounts'
   displayedColumns: string[] = ['name','email','phone','edit','delete'];
   dataSource!: DataSource<ContactDto>;
@@ -34,7 +34,7 @@ export class AccountListComponent {
 
   edit(id: any) {
     console.log(`id: ${id}`);
-    this.router.navigate(['/account-details', 0]);
+    this.router.navigate(['/contact-details', 0]);
   }
 
   async delete(id: any) {

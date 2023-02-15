@@ -3,16 +3,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { defer, debounce, filter, first, from, last, map, Observable, switchMap, tap, timer, distinctUntilChanged, of, debounceTime } from 'rxjs';
 import { isNonNull } from 'src/main';
 import { ContactApi, ContactDto } from 'toybox-backend';
-import { config as apiConfig } from "../../api/config";
+import { config as apiConfig } from "../../../api/config";
 
 const api = new ContactApi(apiConfig);
 
 @Component({
-  selector: 'app-account-detail',
-  templateUrl: './account-detail.component.html',
-  styleUrls: ['./account-detail.component.scss']
+  selector: 'contact-detail',
+  templateUrl: './contact-detail.component.html',
+  styleUrls: ['./contact-detail.component.scss']
 })
-export class AccountDetailComponent implements OnInit, OnDestroy {
+export class ContactDetailComponent implements OnInit, OnDestroy {
   $id!: Observable<string>;
   title='Account detail for'
   $contact!: Observable<ContactDto>;
@@ -70,7 +70,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
       } else {
         const res = await api.createContact({...this.editedContact});
       }
-      this.router.navigate(['/accounts']);
+      this.router.navigate(['/contacts']);
     } catch (err) {
       console.error(err);
     }
