@@ -14,7 +14,7 @@ const api = new ContactApi(apiConfig);
 })
 export class ContactDetailComponent implements OnInit, OnDestroy {
   $id!: Observable<string>;
-  title='Account detail for'
+  title='Contact detail for'
   $contact!: Observable<ContactDto>;
   editedContact: ContactDto = {
     name: '',

@@ -12,7 +12,7 @@ const api = new ContactApi(apiConfig);
   styleUrls: ['./contact-list.component.scss']
 })
 export class ContactListComponent {
-  title='Accounts'
+  title='Contacts'
   displayedColumns: string[] = ['name','email','phone','edit','delete'];
   dataSource!: DataSource<ContactDto>;
 
