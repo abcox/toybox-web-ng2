@@ -4,12 +4,41 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+// https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+//form {
+//    display: flex;
+//    justify-content: flex-end;
+//}
+//input {
+//    display: flex;
+//    justify-content: flex-end;
+//}
+
 mat-card {
+    display: flex;
     margin: 20px;
     max-width: 600px;
 
     mat-card-header {
+        display: flex;
         font-size: x-large;
+        
+        mat-card-title {
+            //display: flex;
+        }
+        //.title {
+        //    align-self: flex-start;
+        //    //justify-content: flex-start;
+        //}
+        //.search-form {
+        //    display: flex;
+        //    //justify-content: flex-end;
+        //    align-self: flex-end;
+        //}
+        //.space {
+        //    //justify-content: space-around;
+        //}
     }
 
     mat-card-content {
