@@ -58,7 +58,7 @@ export class ContactListComponent implements AfterViewInit {
         reqParams.search,
         reqParams.limit,
         reqParams.page,
-        reqParams.options        
+        reqParams.options
       ); // todo: searchRequest model needed
       console.log(`res.data: ${JSON.stringify(res.data)}`);
       const data: any = res.data;

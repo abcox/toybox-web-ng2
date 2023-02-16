@@ -6,6 +6,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This is an Angular web client for back-end typescript API (used NestJS) [toybox-api](https://github.com/abcox/toybox-api)
 
+## Data (MongoDB)
+
+1. Using [MongoDB for VS Code](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode) ([git](https://github.com/mongodb-js/vscode))
+2. Seed data and MongoDB Playground scripts at [toybox-api/src/helpers/data/contacts-seed.mongodb](https://github.com/abcox/toybox-api/tree/main/src/helpers/data)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

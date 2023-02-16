@@ -65,7 +65,7 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
     console.log(`item: ${item}`);
     try {
       if (this.id !== null) {
-        console.log(`updating ${id} with ${item}`);
+        console.log(`updating ${id} with ${JSON.stringify(item)}`);
         const res = await api.updateContact(id, { ...item });
       } else {
         const res = await api.createContact({...this.editedContact});

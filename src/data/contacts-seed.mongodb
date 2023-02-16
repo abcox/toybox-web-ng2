@@ -1,0 +1,64 @@
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+//const database = 'test-db-1';
+//const collection = 'testCollection1';
+
+// Select the database to use.
+use('toybox');
+
+db.createCollection('contacts');
+
+// The drop() command destroys all data from a collection.
+// Make sure you run it against the correct database and collection.
+//db.getCollection('testCollection1').drop();
+
+// Insert a few documents into the sales collection.
+db.getCollection('contacts').insertMany([{
+  "name": "A. Cox",
+  "email": "adam.cox@vorba.com",
+  "phone": "647-389-5555",
+  "id": "5fe81b22aeebddc560830e90"
+},{
+  "name": "S. Barghgir",
+  "email": "solmaz@email.com",
+  "phone": "416-555-1234",
+  "id": "5fe81b3faeebddc560830e91"
+},{
+  "name": "Darian",
+  "email": "Darian@cox.xom",
+  "phone": "555-1234",
+  "id": "5fe9600049dc803988cc877b"
+},{
+  "name": "Joe Smith",
+  "email": "jsmith@hotmail.com",
+  "phone": "555-4444"
+},{
+  "name": "D. Stevenson",
+  "email": "dsteves@gmail.com",
+  "phone": "555-1232"
+},{
+  "name": "Adam Cox",
+  "email": "adam@adamcox.net",
+  "phone": "647-389-5555"
+},{
+  "name": "Adam Cox",
+  "email": "adam@adamcox.net",
+  "phone": "647-389-5555"
+}]);
+
+// Run a find command to view items sold on April 4th, 2014.
+//db.getCollection('contacts').find({ date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') } });
+
+// Build an aggregation to view total sales for each product in 2014.
+//const aggregation = [
+//  { $match: { date: { $gte: new Date('2014-01-01'), $lt: new Date('2015-01-01') } } },
+//  { $group: { _id: '$item', totalSaleAmount: { $sum: { $multiply: [ '$price', '$quantity' ] } } } }
+//];
+
+// Run the aggregation and open a cursor to the results.
+// Use toArray() to exhaust the cursor to return the whole result set.
+// You can use hasNext()/next() to iterate through the cursor page by page.
+//db.sales.aggregate(aggregation);
