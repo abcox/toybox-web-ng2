@@ -4,7 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Back-end / API
 
-This is an Angular web client for back-end typescript API (used NestJS) [toybox-api](https://github.com/abcox/toybox-api)
+1. This is an Angular web client for back-end typescript API (used NestJS) [toybox-api](https://github.com/abcox/toybox-api)
+2. Clone the API [toybox-api](https://github.com/abcox/toybox-api), change directory to root folder, and run:
+    ```
+    npm install
+    npm run start
+    ```
+    And open browser (i.e. Chrome) to [http://localhost:3000/api/](http://localhost:3000/api/)
 
 ## Data (MongoDB)
 
