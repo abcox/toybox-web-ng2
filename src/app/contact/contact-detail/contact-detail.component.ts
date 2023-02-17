@@ -38,7 +38,8 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
         if (!!id && id !== 'null') {
           this.id = id;
           console.log(`id: ${id}`);
-          return from(api.getContact(id).then(resp => (resp.data as unknown) as ContactDto));
+          //return from(api.getContact(id).then(resp => (resp.data as unknown) as ContactDto));
+          return of()
         } else {
           this.id = null;
           return of({
@@ -59,20 +60,20 @@ export class ContactDetailComponent implements OnInit, OnDestroy {
     // nothing
   }
   async save() {
-    const item = this.editedContact;
-    let id: string = this.id;
-    //this.$id.subscribe(item => id = item);
-    console.log(`item: ${item}`);
-    try {
-      if (this.id !== null) {
-        console.log(`updating ${id} with ${JSON.stringify(item)}`);
-        const res = await api.updateContact(id, { ...item });
-      } else {
-        const res = await api.createContact({...this.editedContact});
-      }
-      this.router.navigate(['/contacts']);
-    } catch (err) {
-      console.error(err);
-    }
+    //const item = this.editedContact;
+    //let id: string = this.id;
+    ////this.$id.subscribe(item => id = item);
+    //console.log(`item: ${item}`);
+    //try {
+    //  if (this.id !== null) {
+    //    console.log(`updating ${id} with ${JSON.stringify(item)}`);
+    //    const res = await api.updateContact(id, { ...item });
+    //  } else {
+    //    const res = await api.createContact({...this.editedContact});
+    //  }
+    //  this.router.navigate(['/contacts']);
+    //} catch (err) {
+    //  console.error(err);
+    //}
   }
 }
